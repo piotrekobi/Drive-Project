@@ -3,4 +3,22 @@ html, body {
   width: 100%;
 }
 
+.fileIcon{
+  height: 100px
+}
 
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.fileButton{
+  background-color: #fff;
+  padding: 2rem;
+  border: solid 1px #ccd0d4;
+  border-radius: 0.3rem;
+  text-align: center;
+  margin: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .04);
+}

@@ -13,11 +13,14 @@
 </head>
 
 <body>
+    <div>
     <form action="upload.php" method="post" enctype="multipart/form-data">
         Prześlij plik:
         <input type="file" name="fileToUpload" id="fileToUpload">
         <input type="submit" value="Zatwierdź" name="submit">
     </form>
+    <button class='takeAPictureButton' onclick="takeAPicture()">Zapisz zdjęcie z kamery</button>
+    </div>
 
     Pliki na dysku:
     <?php listFiles("files") ?>
