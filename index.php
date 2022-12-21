@@ -49,7 +49,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="tab-content" id="tab-content">
-                                    <div class="tab-pane fade active" id="nav-upload" data-bs-toggle="tab" data-bs-target="#nav-upload-tab" role="tabpanel" aria-labelledby="nav-upload-tab">
+                                    <div class="tab-pane fade active show" id="nav-upload" data-bs-toggle="tab" data-bs-target="#nav-upload-tab" role="tabpanel" aria-labelledby="nav-upload-tab">
                                         <form action="upload.php" method="post" enctype="multipart/form-data">
                                             <div class="input-group">
                                                 <input type="file" class="form-control" name="fileToUpload" id="fileToUpload">
@@ -60,7 +60,7 @@
                                             <!-- <input type="submit" value="Zatwierdź" name="submit"> -->
                                         </form>
                                     </div>
-                                    <div class="tab-pane fade active" id="nav-photo" data-bs-toggle="tab" data-bs-target="#nav-photo-tab" role="tabpanel" aria-labelledby="nav-photo-tab">
+                                    <div class="tab-pane fade" id="nav-photo" data-bs-toggle="tab" data-bs-target="#nav-photo-tab" role="tabpanel" aria-labelledby="nav-photo-tab">
                                         <form action="upload.php" method="post" enctype="multipart/form-data">
                                             <button class="btn btn-primary" onclick="takeAPicture()">Zapisz zdjęcie z kamery</button>
                                         </form>
