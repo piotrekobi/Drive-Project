@@ -1,19 +1,4 @@
 <?php
-// function listFiles($dir)
-// {
-//     $files = scandir($dir);
-//     $files = array_diff($files, array('..', '.'));
-//     $html_code = "<div class='container'>";
-//     foreach ($files as $file) {
-//         $html_code .= "<button class='fileButton' onclick=\"location.href='$dir/$file'\">
-//                       <img class='fileIcon' src='$dir/$file'>
-//                       <p>$file</p>
-//                       </button>";
-//     }
-
-//     $html_code .= "</div>";
-//     echo($html_code);
-// }
 function listFiles($dir)
 {
     $files = scandir($dir);
@@ -33,4 +18,31 @@ function listFiles($dir)
     }
     echo($html_code);
 }
+?>
+
+<?php 
+function validateCredentials($username, $password) {
+    // Sprawdź długość loginu (od 3 do 16 znaków)
+    if (strlen($username) < 3 || strlen($username) > 16) {
+      return 'Niepoprawna długość loginu (od 3 do 16 znaków)';
+    }
+  
+    // Sprawdź długość hasła (minimum 8 znaków)
+    if (strlen($password) < 8) {
+      return 'Hasło musi składać się z co najmniej 8 znaków';
+    }
+  
+    // Sprawdź, czy login zawiera tylko dozwolone znaki (cyfry, litery i znaki "_" oraz "-")
+    if (!preg_match('/^[a-zA-Z0-9_-]+$/', $username)) {
+      return 'Login może zawierać tylko litery, cyfry, znaki "_" i "-"';
+    }
+  
+    // Sprawdź, czy hasło zawiera przynajmniej jedną cyfrę i jedną dużą literę
+    if (!preg_match('/^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
+      return 'Hasło musi zawierać przynajmniej jedną cyfrę i jedną dużą literę';
+    }
+  
+    // Jeśli nie został zwrócony żaden komunikat o błędzie, to znaczy, że login i hasło są poprawne
+    return true;
+  }
 ?>

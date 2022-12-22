@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!DOCTYPE html>
 <html>
 <style>
@@ -57,7 +60,13 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
     <main class="form-signin">
         <form action="/../forms/register.php" method="post">
             <h1 class="h3 mb-3 fw-normal text-center">Zarejestruj się</h1>
-
+            <?php
+            if (isset($_SESSION['error'])) {
+                echo '<div class="alert alert-danger" role="alert">' .
+                    $_SESSION['error'] . '</div>';
+                unset($_SESSION['error']);
+            }
+            ?>
             <div class="form-floating">
                 <input type="text" class="form-control" id="username" name="username">
                 <label for="username">Nazwa użytkownika</label>

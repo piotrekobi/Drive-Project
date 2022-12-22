@@ -1,22 +1,36 @@
 <?php
-if (isset($_POST['username']) && isset($_POST['password'])) {
+include "../funcs.php";
+?>
+<?php
+session_start();
+if (isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['username']) && !empty($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    error_log(print_r("true", TRUE));
+
+    $result = validateCredentials($username, $password);
+    if ($result !== true) {
+        $_SESSION['error'] = $result;
+        header('Location: /../register.php');
+        return;
+    } 
+
     $users = json_decode(file_get_contents('../users.json'), true);
     if (isset($users[$username])) {
-        // uzytkownik juz istenieje
-        error_log(print_r("uzytkownik juz istenieje", TRUE));
+        $_SESSION['error'] = "Użytkownik o danym nicku już istnieje";
         header('Location: /../register.php');
     }
     else{
-        error_log(print_r("dodaje", TRUE));
         $users[$username] = array('password' => $password);
         file_put_contents('../users.json', json_encode($users));
         header('Location: /../login.php');
     }
 }
 else {
-    error_log(print_r("inny blad", TRUE));
+    if(empty($_POST['username'])){
+        $_SESSION['error'] = "Podaj nazwę użytkownika";
+    }
+    else{
+        $_SESSION['error'] = "Podaj hasło";
+    }
     header('Location: /../register.php');
 }
