@@ -4,7 +4,7 @@ include "../funcs.php";
 
 <?php
 
-session_start();
+// session_start();
 $json = file_get_contents('../users.json');
 $users = json_decode($json, true);
 

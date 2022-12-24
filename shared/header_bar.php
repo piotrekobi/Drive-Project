@@ -1,6 +1,9 @@
 <?php 
-session_start();
-$user_name = $_SESSION['username'];
+// session_start();
+if(isset($_SESSION['username']))
+{
+    $user_name = $_SESSION['username'];
+}
 ?>
 <div class="d-flex justify-content-between p-3 my-0 text-white bg-dark rounded shadow-sm">
 
@@ -10,7 +13,7 @@ $user_name = $_SESSION['username'];
     <form action="/../forms/logout.php" method="post">
         <?php
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-            echo '<div class="mx-2 d-inline-block">' . "Witaj, ${user_name}" .
+            echo '<div class="mx-2 d-inline-block">' . "Witaj, {$user_name}" .
             '</div>
             <input type="submit" class="btn btn-secondary" value="Wyloguj się">';
         } else {
