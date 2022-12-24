@@ -18,9 +18,6 @@ function listFiles($dir)
     }
     echo($html_code);
 }
-?>
-
-<?php 
 function validateCredentials($username, $password) {
     // Sprawdź długość loginu (od 3 do 16 znaków)
     if (strlen($username) < 3 || strlen($username) > 16) {
