@@ -26,7 +26,7 @@
                             </form>
                         </div>
                         <div class="tab-pane fade" id="nav-photo" data-bs-toggle="tab" data-bs-target="#nav-photo-tab" role="tabpanel" aria-labelledby="nav-photo-tab">
-                            <form action="upload.php" method="post" enctype="multipart/form-data">
+                            <form action="views/saveFromCamera.php" method="post" enctype="multipart/form-data">
                                 <button class="btn btn-primary" onclick="takeAPicture()">Zapisz zdjęcie z kamery</button>
                             </form>
                         </div>
