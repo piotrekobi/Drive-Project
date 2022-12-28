@@ -19,7 +19,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['use
         }
         $_SESSION['logged_in'] = true;
         $_SESSION['username'] = $username;
-        header('Location: /../index.php');
+        header('Location: /../index.php?location=files');
         exit;
     } else {
         $_SESSION['error'] = "Błędna nazwa użytkownika lub hasło";
@@ -31,5 +31,3 @@ if (isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['use
 }
 
 ?>
-
-

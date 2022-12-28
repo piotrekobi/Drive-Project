@@ -1,7 +1,8 @@
 <?php
     date_default_timezone_set("Europe/Warsaw");
     $img = $_POST['image'];
-    $folderPath = "../files/";
+    $location = $_POST['location'];
+    $folderPath = "../$location/";
   
     $image_parts = explode(";base64,", $img);
     $image_type_aux = explode("image/", $image_parts[0]);
@@ -13,6 +14,6 @@
     $file = $folderPath . $fileName;
     file_put_contents($file, $image_base64);
     
-    header( "Location: ../index.php" );
+    header( "Location: ../index.php?location=$location" );
     exit ;
 ?>
