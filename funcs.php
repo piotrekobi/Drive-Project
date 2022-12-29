@@ -27,7 +27,7 @@ function listFiles($dir)
         $date_modified = date("M j Y", filemtime($path));
         if (is_dir($path)) {
             $onclick_path = "index.php?location=$path";
-            $preview = "<i class=\"bi bi-folder\" style=\"font-size: 128px\"></i>";
+            $preview = "<div class=\"card-img-top text-center\"><i class=\"bi bi-folder\" style=\"font-size: 128px\"></i></div>";
             $file_size = "";
         }
         $html_code .= " <div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='$onclick_path';\">
