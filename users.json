@@ -1,1 +1,1 @@
-{"user1":{"password":"password1"},"user2":{"password":"password2"},"user3":{"password":"password3"},"User22":{"password":"Password22D"}}
+{"admin":{"password":"$2y$10$8zP1Lw8HH9mHNb9oKSJZBek1qiuLxI0z8inVwb59ZQOkkofRRnd8S","rootFolder":"lgnts1"},"root":{"password":"$2y$10$lkqHJMWda7sSCie50rEEQeupRRkYAmc6Aqo7utERv63Q9l4MD4fZu","rootFolder":"2jdsbf"}}
