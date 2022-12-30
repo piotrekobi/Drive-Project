@@ -1,8 +1,24 @@
 <?php
-
-function print_navbar($dir)
+if (!isset($_SESSION)) {
+    session_start();
+}
+function get_actual_path($url_path)
 {
+    $user_root_folder = "files" . "/" . $_SESSION['rootFolder'];
+    return substr_replace($url_path, $user_root_folder, 0, strlen("Home"));
+}
+
+function get_url_path($path)
+{
+    $user_root_folder = "files" . "/" . $_SESSION['rootFolder'];
+    return substr_replace($path, "Home", 0, strlen($user_root_folder));
+}
+function print_navbar($url_path)
+{
+    $dir = get_actual_path($url_path);
     $dir_names = explode("/", $dir);
+    $dir_names = array_slice($dir_names, 2);
+    array_unshift($dir_names, "Home");
     $html_code = "";
     foreach ($dir_names as $index => $name) {
         $path = implode("/", array_slice($dir_names, 0, $index + 1));
@@ -14,8 +30,9 @@ function print_navbar($dir)
 
 }
 
-function listFiles($dir)
+function listFiles($url_path)
 {
+    $dir = get_actual_path($url_path);
     $files = scandir($dir);
     $files = array_diff($files, array('..', '.'));
     $html_code = "";
@@ -26,6 +43,7 @@ function listFiles($dir)
         $file_size = human_filesize(filesize($path));
         $date_modified = date("M j Y", filemtime($path));
         if (is_dir($path)) {
+            $path = get_url_path($path);
             $onclick_path = "index.php?location=$path";
             $preview = "<div class=\"card-img-top text-center\"><i class=\"bi bi-folder\" style=\"font-size: 128px\"></i></div>";
             $file_size = "";
@@ -54,14 +72,16 @@ function human_filesize($bytes, $decimals = 0)
     return $human_size;
 }
 
-function listDirs($dir)
+function listDirs($url_path)
 {
+    $dir = get_actual_path($url_path);
     $files = scandir($dir);
     $files = array_diff($files, array('..', '.'));
     $html_code = "";
     foreach ($files as $file) {
         $path = $dir . "/" . $file;
         if (is_dir($path)) {
+            $path = get_url_path($path);
             $html_code .= "<li class=\"list-group-item\">
                 <a href=\"index.php?location=$path\">$file</a>
             </li>";
@@ -74,23 +94,13 @@ function listDirs($dir)
 function validateCredentials($username, $password)
 {
     // Sprawdź długość loginu (od 3 do 16 znaków)
-    if (strlen($username) < 3 || strlen($username) > 16) {
-        return 'Niepoprawna długość loginu (od 3 do 16 znaków)';
-    }
-
-    // Sprawdź długość hasła (minimum 8 znaków)
-    if (strlen($password) < 8) {
-        return 'Hasło musi składać się z co najmniej 8 znaków';
+    if (strlen($username) < 1 || strlen($username) > 16) {
+        return 'Niepoprawna długość loginu (od 1 do 16 znaków)';
     }
 
     // Sprawdź, czy login zawiera tylko dozwolone znaki (cyfry, litery i znaki "_" oraz "-")
     if (!preg_match('/^[a-zA-Z0-9_-]+$/', $username)) {
         return 'Login może zawierać tylko litery, cyfry, znaki "_" i "-"';
-    }
-
-    // Sprawdź, czy hasło zawiera przynajmniej jedną cyfrę i jedną dużą literę
-    if (!preg_match('/^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
-        return 'Hasło musi zawierać przynajmniej jedną cyfrę i jedną dużą literę';
     }
 
     // Jeśli nie został zwrócony żaden komunikat o błędzie, to znaczy, że login i hasło są poprawne

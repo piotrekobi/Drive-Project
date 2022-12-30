@@ -8,7 +8,7 @@ if (isset($_SESSION['username'])) {
 
     <?php ?>
     <h2>
-        <a href="index.php?location=files"> SuperDrive</a>
+        <a href="index.php?location=Home"> SuperDrive</a>
     </h2>
     <div class="inline-block ">
         <form action="/../forms/logout.php" method="post">

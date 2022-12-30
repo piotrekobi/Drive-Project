@@ -20,7 +20,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['use
         $_SESSION['logged_in'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['rootFolder'] = $users[$username]['rootFolder'];
-        header('Location: /../index.php?location=files');
+        header('Location: /../index.php?location=Home');
         exit;
     } else {
         $_SESSION['error'] = "Błędna nazwa użytkownika lub hasło";

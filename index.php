@@ -1,10 +1,4 @@
-<?php include 'funcs.php'; 
-if(!isset($_SESSION)) 
-{ 
-    session_start(); 
-} 
-?>
-
+<?php include 'funcs.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -18,14 +12,13 @@ if(!isset($_SESSION))
     <div class="container-fluid px-1 vh-100">
         <?php include "shared/header_bar.php"; ?>
         <main class="h-75 align-content-center pt-3">
-            <?php 
-            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true){
+            <?php
+            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                 include 'views/disk.php';
-            }
-            else{
-                include 'views/home.php';
-            }?>
-            
+            } else {
+                include 'views/Home.php';
+            } ?>
+
         </main>
     </div>
 </body>
