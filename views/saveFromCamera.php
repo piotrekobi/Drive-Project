@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-12 text-center">
                 <br />
-                <button class="btn btn-primary">Zapisz</button>
+                <button class="btn btn-primary" id="save_camera_img" disabled>Zapisz</button>
             </div>
         </div>
     </form>
