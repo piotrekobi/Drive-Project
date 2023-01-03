@@ -1,3 +1,8 @@
+<?php 
+if(!isset($_GET['location'])){
+    header("Location: index.php?location=$location");
+}
+?>
 <div class="container-fluid mt-3">
     <div class="row">
         <div class="col-2">
