@@ -48,7 +48,7 @@ function listFiles($url_path)
             $preview = "<div class=\"card-img-top text-center\"><i class=\"bi bi-folder\" style=\"font-size: 128px\"></i></div>";
             $file_size = "";
         }
-        $html_code .= " <div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='$onclick_path';\">
+        $html_code .= " <div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='file_viewer.php/$onclick_path';\">
                             $preview    
                             <div class='card-body'> 
                                 <h5 class='card-title'><a href='#' class='stretched-link'>$file</a></h5>
