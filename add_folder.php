@@ -1,7 +1,12 @@
 <?php
 include 'funcs.php';
 $location = $_POST['location'];
-$dir_name = get_actual_path($location) . "/" . "nowy_folder";
+if(!empty($_POST['new_folder_name'])) {
+    $new_folder_name = $_POST['new_folder_name'];
+    $dir_name = get_actual_path($location) . "/" . $new_folder_name;
+} else {
+    $dir_name = get_actual_path($location) . "/" . "nowy_folder";
+}
 while (is_dir($dir_name)) {
     $dir_name .= 1;
 }
