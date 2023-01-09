@@ -16,7 +16,7 @@
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
                 include 'views/disk.php';
             } else {
-                include 'views/Home.php';
+                include 'views/home.php';
             } ?>
 
         </main>
