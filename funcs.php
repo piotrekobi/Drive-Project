@@ -47,8 +47,6 @@ function listFiles($url_path)
             $onclick_path = "index.php?location=$path";
             $preview = "<div class=\"card-img-top text-center\"><i class=\"bi bi-folder\" style=\"font-size: 128px\"></i></div>";
             $file_size = "";
-        }
-        if (is_dir($file)){
             $html_code .= "<div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='$onclick_path';\">
                             $preview    
                             <div class='card-body'> 
@@ -59,6 +57,9 @@ function listFiles($url_path)
                                 </div>
                             </div>
                         </div>";
+                        echo ($html_code);
+                        $html_code = "";
+                        
         } else {
             $html_code .= "<div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='file_viewer.php/$onclick_path';\">
                             $preview    
@@ -70,9 +71,11 @@ function listFiles($url_path)
                                 </div>
                             </div>
                         </div>";
+                        echo ($html_code);
+                        $html_code = "";
         }
     }
-    echo ($html_code);
+
 }
 
 function human_filesize($bytes, $decimals = 0)
