@@ -75,7 +75,7 @@ function listFiles($url_path)
                         $html_code = "";
         }
     }
-    if (!$files){
+    if (!$files && substr_count($dir, '/') != 1){
         $html_code .= "<style>
         .deleteButton {
             border: 0;
