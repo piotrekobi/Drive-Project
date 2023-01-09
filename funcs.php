@@ -75,7 +75,40 @@ function listFiles($url_path)
                         $html_code = "";
         }
     }
-
+    if (!$files){
+        $html_code .= "<style>
+        .deleteButton {
+            border: 0;
+            text-align: center;
+            display: inline-block;
+            padding: 14px;
+            width: 150px;
+            margin: 7px;
+            color: #ffffff;
+            background-color: #F00C0C;
+            border-radius: 8px;
+            font-family: 'proxima-nova-soft', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            transition: box-shadow 200ms ease-out;
+        }
+        </style>
+        <div>
+                            <form method='post'>
+                            <button class='deleteButton' type='submit' name='remButton' value='remButton'/>usuń folder</button>
+                        </div>
+                    </div>";
+        echo ($html_code);
+        $html_code = "";
+        if(array_key_exists('remButton', $_POST)) {
+            rmdir($_SERVER['DOCUMENT_ROOT'].'/'.$dir);
+            ?>
+            <script type="text/javascript">
+            window.location = "/../index.php?location=Home";
+            </script>
+            <?php
+        }
+    }
 }
 
 function human_filesize($bytes, $decimals = 0)
