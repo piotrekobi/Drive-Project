@@ -60,14 +60,14 @@ include "funcs.php";
     $path = $file;
     $onclick_path = $path;
     $preview = "<img class='card-img-top' alt='' src='$path'>";
-        $file_size = human_filesize(filesize($path));
-        $date_modified = date("M j Y", filemtime($path));
-        if (is_dir($path)) {
-            $path = get_url_path($path);
-            $onclick_path = "index.php?location=$path";
-            $preview = "<div class=\"card-img-top text-center\"><i class=\"bi bi-folder\" style=\"font-size: 128px\"></i></div>";
-            $file_size = "";
-        }
+    $file_size = human_filesize(filesize($path));
+    $date_modified = date("M j Y", filemtime($path));
+    if (is_dir($path)) {
+        $path = get_url_path($path);
+        $onclick_path = "index.php?location=$path";
+        $preview = "<div class=\"card-img-top text-center\"><i class=\"bi bi-folder\" style=\"font-size: 128px\"></i></div>";
+        $file_size = "";
+    }
     $html_code .= "<div class='card file-card m-2' style='width: 18rem;'>
                             $preview    
                             <div class='card-body'> 
@@ -92,26 +92,20 @@ include "funcs.php";
                             </div>
                         </div>";
     echo ($html_code);
-    echo ($file);
-
     $pieces = explode("/", $file);
     $sliced = array_slice($pieces, 0, -1);
     $string = implode("/", $sliced);
-    echo $pieces[0];
-    echo $pieces[1];
-    echo $pieces[2];
     ?>
 </center>
-
 <?php
-    if(isset($_POST['renButton'])) {
-        rename($file, $string + '/' + "new");
+    if(isset($_POST['renButton']) && !empty($_POST['new_name'])) {
+        $new_name = $_POST['new_name'];
+        rename($file, $string + '/' + $new_name);
     }
     if(isset($_POST['delButton'])) {
-        unlink($file);
-        rmdir($pieces[2]);
+        rmdir('/../'.$file);
+        header('Location: /../index.php?location=Home');
+        exit();
     }
 ?>
-
-
 </html>
