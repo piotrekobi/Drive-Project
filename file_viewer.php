@@ -74,46 +74,52 @@ include "funcs.php";
         $preview = "<div class=\"card-img-top text-center\"><i class=\"bi bi-folder\" style=\"font-size: 128px\"></i></div>";
         $file_size = "";
     }
-    $html_code .= "<div class='card file-card m-2' style='width: 18rem;'>
-                            $preview    
-                            <div class='card-body'> 
-                                <h5 class='card-title'><a href='#' class='stretched-link'>$temp</a></h5>
-                                <div class='d-flex justify-content-between align-items-center'>
-                                    <p class='card-text mb-0'><small class='text-muted'>$date_modified</small></p>
-                                    <p class='card-text'><small class='text-muted'>$file_size</small></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <form method='post'>
-                                <div>
-                                    <input type='text' class='form-control' id='new_name' name='new_name'>
-                                    <label for='username'>Nowa nazwa</label>
-                                </div>
-                                <button class='renameButton' type='submit' name='renButton' value='renButton'/>zmień nazwę</button>
-                                <button class='deleteButton' type='submit' name='delButton' value='delButton'/>usuń</button>
-                            </form>
-                            <div>
-                                <button class='retButton' onclick=\"location.href='/../index.php?location=Home';\">Powrót</button>
-                            </div>
-                        </div>";
-    echo ($html_code);
+
     $pieces = explode("/", $file);
     $sliced = array_slice($pieces, 0, -1);
     $string = implode("/", $sliced);
     ?>
+    <div class='card file-card m-2' style='width: 18rem;'>
+    <?php echo $preview;  ?>  
+        <div class='card-body'> 
+            <h5 class='card-title'><a href='#' class='stretched-link'><?php echo $_SERVER['DOCUMENT_ROOT'].'/'.$file; ?></a></h5>
+            <div class='d-flex justify-content-between align-items-center'>
+                <p class='card-text mb-0'><small class='text-muted'><?php echo $date_modified; ?></small></p>
+                <p class='card-text'><small class='text-muted'><?php echo $file_size; ?></small></p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <form method='post'>
+            <div>
+                <input type='text' class='form-control' id='new_name' name='new_name'>
+                <label for='username'>Nowa nazwa</label>
+            </div>
+            <button class='renameButton' type='submit' name='renButton' value='renButton'>zmień nazwę</button>
+            <button class='deleteButton' type='submit' name='delButton' value='delButton'>usuń</button>
+        </form>
+        <div>
+            <button class='retButton' onclick="location.href='/../index.php?location=Home';">Powrót</button>
+        </div>
+    </div>
 </center>
 <?php
     if(array_key_exists('renButton', $_POST) && !empty($_POST['new_name'])) {
         $new_name = $_POST['new_name'];
         rename($file, $string.'/'.$new_name);
-        header('Location: /../index.php?location=Home');
-        exit();
+        ?>
+        <script type="text/javascript">
+        window.location = "/../index.php?location=Home";
+        </script>
+        <?php
     }
     else if(array_key_exists('delButton', $_POST)) {
         unlink($_SERVER['DOCUMENT_ROOT'].'/'.$file);
-        header('Location: /../index.php?location=Home');
-        exit();
+        ?>
+        <script type="text/javascript">
+        window.location = "/../index.php?location=Home";
+        </script>
+        <?php
     }
 ?>
 </html>
