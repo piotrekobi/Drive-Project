@@ -61,7 +61,8 @@ function listFiles($url_path)
                         $html_code = "";
                         
         } else {
-            $html_code .= "<div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='file_viewer.php/$onclick_path';\">
+            // $html_code .= "<div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='file_viewer.php/$onclick_path';\"> OLD
+            $html_code .= "<div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='file_viewer2.php?file=$onclick_path';\">
                             $preview    
                             <div class='card-body'> 
                                 <h5 class='card-title'><a href='#' class='stretched-link'>$file</a></h5>
