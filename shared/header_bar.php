@@ -3,12 +3,16 @@
 if (isset($_SESSION['username'])) {
     $user_name = $_SESSION['username'];
 }
+$httpProtocol = !isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on' ? 'http' : 'https';
+
+$base = $httpProtocol.'://'.$_SERVER['HTTP_HOST'].'/';
 ?>
 <div class="d-flex justify-content-between p-3 my-0 text-white bg-dark rounded shadow-sm">
 
     <?php ?>
     <h2>
-        <a href="index.php?location=Home"> SuperDrive</a>
+        <!-- <a href="index.php?location=Home"> SuperDrive</a> -->
+        <a href="<?php echo $base; ?>index.php?location=Home"> SuperDrive</a>
     </h2>
     <div class="inline-block ">
         <form action="/../forms/logout.php" method="post">
