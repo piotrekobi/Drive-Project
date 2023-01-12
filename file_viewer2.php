@@ -8,7 +8,7 @@ include "funcs.php";
     <?php include "shared/head.php"; ?>
     <title>Podgląd</title>
 </head>
-
+<?php include "shared/protect_files.php"; ?>
 <body>
     <div class="container-fluid px-1 vh-100">
         <?php include "shared/header_bar.php"; ?>
