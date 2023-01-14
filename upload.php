@@ -16,7 +16,6 @@ try{
         exit("Nie można przesłać pliku");
     }
 } catch (Exception $e) {
-    exit("Nie można przesłać pliku2");
+    exit("Nie można przesłać pliku");
 }
-
 ?>

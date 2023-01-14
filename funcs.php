@@ -47,8 +47,7 @@ function listFiles($url_path)
             $onclick_path = "index.php?location=$path";
             $preview = "<div class=\"card-img-top text-center\"><i class=\"bi bi-folder\" style=\"font-size: 128px\"></i></div>";
             $file_size = "";
-        }
-        $html_code .= " <div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='$onclick_path';\">
+            $html_code .= "<div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='$onclick_path';\">
                             $preview    
                             <div class='card-body'> 
                                 <h5 class='card-title'><a href='#' class='stretched-link'>$file</a></h5>
@@ -58,8 +57,59 @@ function listFiles($url_path)
                                 </div>
                             </div>
                         </div>";
+                        echo ($html_code);
+                        $html_code = "";
+                        
+        } else {
+            // $html_code .= "<div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='file_viewer.php/$onclick_path';\"> OLD
+            $html_code .= "<div class='card file-card m-2' style='width: 18rem;' onclick=\"location.href='file_viewer2.php?file=$onclick_path';\">
+                            $preview    
+                            <div class='card-body'> 
+                                <h5 class='card-title'><a href='#' class='stretched-link'>$file</a></h5>
+                                <div class='d-flex justify-content-between align-items-center'>
+                                    <p class='card-text mb-0'><small class='text-muted'>$date_modified</small></p>
+                                    <p class='card-text'><small class='text-muted'>$file_size</small></p>
+                                </div>
+                            </div>
+                        </div>";
+                        echo ($html_code);
+                        $html_code = "";
+        }
     }
-    echo ($html_code);
+    if (!$files && substr_count($dir, '/') != 1){
+        $html_code .= "<style>
+        .deleteButton {
+            border: 0;
+            text-align: center;
+            display: inline-block;
+            padding: 14px;
+            width: 150px;
+            margin: 7px;
+            color: #ffffff;
+            background-color: #F00C0C;
+            border-radius: 8px;
+            font-family: 'proxima-nova-soft', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            transition: box-shadow 200ms ease-out;
+        }
+        </style>
+        <div>
+                            <form method='post'>
+                            <button class='deleteButton' type='submit' name='remButton' value='remButton'/>usuń folder</button>
+                        </div>
+                    </div>";
+        echo ($html_code);
+        $html_code = "";
+        if(array_key_exists('remButton', $_POST)) {
+            rmdir($_SERVER['DOCUMENT_ROOT'].'/'.$dir);
+            ?>
+            <script type="text/javascript">
+            window.location = "/../index.php?location=Home";
+            </script>
+            <?php
+        }
+    }
 }
 
 function human_filesize($bytes, $decimals = 0)

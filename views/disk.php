@@ -49,6 +49,10 @@ if(!isset($_GET['location'])){
                     <form action="add_folder.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="location" value="<?php echo $_GET['location']; ?>">
                         <div class="mb-3 mt-2 align-items-end">
+                            <div>
+                                <input type='text' class='form-control' id='new_folder_name' name='new_folder_name'>
+                                <label for='username'>nazwa nowego folderu</label>
+                            </div>
                             <input class="btn btn-primary" type="submit" value="Dodaj folder">
                         </div>
                     </form>
