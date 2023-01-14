@@ -1,3 +1,4 @@
+<?php include "../shared/protected.php"; ?>
 <!DOCTYPE html>
 <html>
 
@@ -8,7 +9,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" /> -->
 </head>
-<?php include "../shared/protected.php"; ?>
 <body>
     <div class="container-fluid px-1 vh-100">
         <?php include "../shared/header_bar.php"; ?>
