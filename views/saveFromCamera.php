@@ -15,7 +15,7 @@
         <main class="h-75 align-content-center pt-3">
             <div class="container-fluid mt-3">
                 <h1 class="text-center">
-                    Zrób zdjęcie i zapisz obraz na dysku2
+                    Zrób zdjęcie i zapisz obraz na dysku
                 </h1>
                 <div class="row">
                     <!-- <div class="col-2">
