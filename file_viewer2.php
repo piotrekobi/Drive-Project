@@ -23,7 +23,11 @@ include "funcs.php";
                         print($_GET['file']);
                         $TTT = $_GET['file'];
                         $LOL = "<img class='card-img-top' alt='' src='$TTT'>";
-                        print($LOL);?>
+                        print($LOL);
+                        $pieces = explode("/", $_GET['file']);
+                        $sliced = array_slice($pieces, 0, -1);
+                        $temp = end($pieces);
+                        $string = implode("/", $sliced);?>
                     </div>
                 </div>
                 <br>
@@ -40,15 +44,14 @@ include "funcs.php";
                             <button type="submit" class="deleteButton" name='delButton' value='delButton'>usuń</button>
                         </div>
                     </form>
-                    <button type="submit" class="retButton" onclick="location.href='/../index.php?location=Home';">Powrót</button>
+                    <div>
+                        <button role="button" href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/'.$_GET['file']; ?>" class="downloadButton" download="<?php echo end($pieces); ?>">Pobierz</button>
+                        <button type="submit" class="retButton" onclick="location.href='/../index.php?location=Home';">Powrót</button>
+                    </div>
                 </div>
 
                 <?php if(array_key_exists('renButton', $_POST) && !empty($_POST['new_name'])) {
                     $new_name = $_POST['new_name'];
-                    $pieces = explode("/", $_GET['file']);
-                    $sliced = array_slice($pieces, 0, -1);
-                    $temp = end($pieces);
-                    $string = implode("/", $sliced);
                     if (!file_exists($string . '/' . $new_name)) {
                         rename($_GET['file'], $string . '/' . $new_name);
                     }
