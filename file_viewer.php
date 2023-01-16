@@ -3,25 +3,8 @@ include "funcs.php";
 ?>
 <!DOCTYPE html>
 <html>
-<style>
-a:link{
-  color:white;
-}
-a:visited{
-  color:white;
-}
-a:hover{
-  color:white;
-}
-a:focus{
-  color:white;
-}
-a:active{
-  color:white;
-}
-</style>
 <head>
-    <link rel="stylesheet" href="button_styles.css">
+    <link rel="stylesheet" href="styles/button_styles.css">
     <?php include "shared/head.php"; ?>
     <title>Podgląd</title>
 </head>

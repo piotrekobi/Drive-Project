@@ -7,7 +7,6 @@
     <title>Zrób zdjęcie z kamery</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" /> -->
 </head>
 <body>
     <div class="container-fluid px-1 vh-100">
@@ -18,13 +17,6 @@
                     Zrób zdjęcie i zapisz obraz na dysku
                 </h1>
                 <div class="row">
-                    <!-- <div class="col-2">
-                        <div class="card bg-light mb-3">
-                            <div class="card-header">
-                                Opcje
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="col-10">
                         <!-- Zawartość -->
                         <form method="POST" action="storeImage.php">

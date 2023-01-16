@@ -14,7 +14,6 @@ $base = $httpProtocol.'://'.$_SERVER['HTTP_HOST'].'/';
 
     <?php ?>
     <h2>
-        <!-- <a href="index.php?location=Home"> SuperDrive</a> -->
         <a href="<?php echo $base; ?>index.php?location=Home"> SuperDrive</a>
     </h2>
     <div class="inline-block ">

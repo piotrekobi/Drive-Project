@@ -9,7 +9,7 @@ if (!isset($_SESSION)) {
 <head>
     <?php include "shared/head.php"; ?>
     <title>Zaloguj się</title>
-    <link rel="stylesheet" href="login_styles.css">
+    <link rel="stylesheet" href="styles/login_styles.css">
 </head>
 <?php
 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
