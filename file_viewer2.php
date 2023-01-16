@@ -3,7 +3,23 @@ include "funcs.php";
 ?>
 <!DOCTYPE html>
 <html>
-
+<style>
+a:link{
+  color:white;
+}
+a:visited{
+  color:white;
+}
+a:hover{
+  color:white;
+}
+a:focus{
+  color:white;
+}
+a:active{
+  color:white;
+}
+</style>
 <head>
     <link rel="stylesheet" href="button_styles.css">
     <?php include "shared/head.php"; ?>
@@ -45,7 +61,7 @@ include "funcs.php";
                         </div>
                     </form>
                     <div>
-                        <button role="button" href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/'.$_GET['file']; ?>" class="downloadButton" download="<?php echo end($pieces); ?>">Pobierz</button>
+                        <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/'.$_GET['file']; ?>" class="downloadButton" download="<?php echo end($pieces); ?>">Pobierz</a>
                         <button type="submit" class="retButton" onclick="location.href='/../index.php?location=Home';">Powrót</button>
                     </div>
                 </div>
