@@ -92,6 +92,21 @@ function listFiles($url_path)
             text-decoration: none;
             transition: box-shadow 200ms ease-out;
         }
+        .deleteButton:hover {
+            border: 0;
+            text-align: center;
+            display: inline-block;
+            padding: 14px;
+            width: 150px;
+            margin: 7px;
+            color: #ffffff;
+            background-color: #D22929;
+            border-radius: 8px;
+            font-family: 'proxima-nova-soft', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            transition: box-shadow 200ms ease-out;
+          }
         </style>
         <div>
                             <form method='post'>
