@@ -17,7 +17,7 @@ include "funcs.php";
             <main class="h-75 align-content-center pt-3">
                 <!-- Page content -->
                 Podgląd pliku
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 22rem;">
                     <div class="card-body">
                         <?php 
                         print($_GET['file']);
@@ -26,24 +26,32 @@ include "funcs.php";
                         print($LOL);?>
                     </div>
                 </div>
-                
+                <br>
                 <div>
-                    <div>
-                        <div class="card" style="width: 18rem;">
-                            <input type='text' class='form-control' id='new_name' name='new_name'>
-                            <label for='username'>Nowa nazwa</label>
+                    <form method='post'>
+                        <div>
+                            <div class="card" style="width: 18rem;">
+                                <input type='text' class='form-control' id='new_name' name='new_name'>
+                                <label for='username'>Nowa nazwa</label>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <button type="submit" class="renameButton" name='renButton' value='renButton'>zmień nazwę</button>
-                        <button type="submit" class="deleteButton" name='delButton' value='delButton'>usuń</button>
-                    </div>
+                        <div>
+                            <button type="submit" class="renameButton" name='renButton' value='renButton'>zmień nazwę</button>
+                            <button type="submit" class="deleteButton" name='delButton' value='delButton'>usuń</button>
+                        </div>
+                    </form>
                     <button type="submit" class="retButton" onclick="location.href='/../index.php?location=Home';">Powrót</button>
                 </div>
 
                 <?php if(array_key_exists('renButton', $_POST) && !empty($_POST['new_name'])) {
                     $new_name = $_POST['new_name'];
-                    rename($_GET['file'], $new_name);
+                    $pieces = explode("/", $_GET['file']);
+                    $sliced = array_slice($pieces, 0, -1);
+                    $temp = end($pieces);
+                    $string = implode("/", $sliced);
+                    if (!file_exists($string . '/' . $new_name)) {
+                        rename($_GET['file'], $string . '/' . $new_name);
+                    }
                     ?>
                     <script type="text/javascript">
                     window.location = "/../index.php?location=Home";
